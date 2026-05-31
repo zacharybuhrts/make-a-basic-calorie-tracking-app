@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PlateLog Calorie Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Daily food journal</p>
+          <h1>PlateLog</h1>
+          <p class="hero-text">Track meals, calories, and progress toward your daily goal.</p>
+        </div>
+      </section>
+
+      <section class="dashboard" aria-label="Calorie summary">
+        <div class="stat-panel total-panel">
+          <span class="stat-label">Today</span>
+          <strong id="todayCalories">0</strong>
+          <span class="stat-caption">calories logged</span>
+        </div>
+        <div class="stat-panel">
+          <span class="stat-label">Daily goal</span>
+          <label class="goal-control">
+            <input id="dailyGoal" type="number" min="1" max="10000" step="50" value="2000">
+            <span>cal</span>
+          </label>
+        </div>
+        <div class="stat-panel">
+          <span class="stat-label">Remaining</span>
+          <strong id="remainingCalories">2000</strong>
+          <span class="stat-caption">calories left</span>
+        </div>
+      </section>
+
+      <section class="progress-wrap" aria-label="Daily goal progress">
+        <div class="progress-header">
+          <span id="progressLabel">0% of goal</span>
+          <span id="mealCount">0 foods</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <form id="foodForm" class="entry-form">
+          <h2>Add food</h2>
+          <div class="field">
+            <label for="foodName">Food</label>
+            <input id="foodName" name="foodName" type="text" placeholder="Greek yogurt" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="calories">Calories</label>
+              <input id="calories" name="calories" type="number" min="1" max="5000" placeholder="180" required>
+            </div>
+            <div class="field">
+              <label for="mealType">Meal</label>
+              <select id="mealType" name="mealType">
+                <option>Breakfast</option>
+                <option>Lunch</option>
+                <option>Dinner</option>
+                <option>Snack</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="foodDate">Date</label>
+            <input id="foodDate" name="foodDate" type="date" required>
+          </div>
+          <button class="primary-button" type="submit">Add food</button>
+        </form>
+
+        <section class="log-panel">
+          <div class="log-header">
+            <h2>Food log</h2>
+            <div class="filter-group" role="group" aria-label="Filter food log">
+              <button class="filter-button active" type="button" data-filter="today">Today</button>
+              <button class="filter-button" type="button" data-filter="all">All</button>
+            </div>
+          </div>
+          <ul id="foodList" class="food-list" aria-live="polite"></ul>
+          <p id="emptyState" class="empty-state">No foods logged yet. Add your first meal to start the day.</p>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
